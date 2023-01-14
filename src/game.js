@@ -4,7 +4,7 @@ const CLASS_BLACK = 'bg-black';
 let playing = false;
 let points = 0;
 let personal_record = 0;
-let timer = 20.00;
+let timer = "20.00";
 
 function setup() {
     for (let i=0; i<NODES; i++) {
@@ -14,7 +14,7 @@ function setup() {
     for (let j=0; j<4; j++) {
         activateNode();
     }
-    document.getElementById("timer").innerHTML = timer;
+    document.getElementById("timer-div").innerHTML = timer;
 }
 
 function nodeClicked(event) {
