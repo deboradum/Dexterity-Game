@@ -3,6 +3,8 @@ const CLASS_WHITE = 'bg-white';
 const CLASS_BLACK = 'bg-black';
 let playing = false;
 let points = 0;
+let personal_record = 0;
+let timer = 20.00;
 
 function setup() {
     for (let i=0; i<NODES; i++) {
@@ -12,25 +14,32 @@ function setup() {
     for (let j=0; j<4; j++) {
         activateNode();
     }
+    document.getElementById("timer").innerHTML = timer;
 }
 
 function nodeClicked(event) {
-    let node = event.target
-    let nodeNum = node.id
+    let node = event.target;
+    let nodeNum = node.id;
 
     if (isActive(nodeNum)) {
+        document.getElementById("lost-div").innerHTML = '';
         deactivateNode(nodeNum);
         activateNode();
         points++;
         document.getElementById("points-div").innerHTML = points;
     } else {
-        document.getElementById("points-div").innerHTML = 0;
         document.getElementById("lost-div").innerHTML = 'You lost!';
+        if (points > personal_record) {
+            personal_record = points;
+            document.getElementById('pr-div').innerHTML = personal_record;
+        }
         reset()
     }
 }
 
 function reset() {
+    points = 0;
+    document.getElementById("points-div").innerHTML = points;
     for (let i=0; i<NODES; i++) {
         if (isActive(i)) {
             deactivateNode(i);

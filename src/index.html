@@ -7,13 +7,21 @@
   <script src="game.js" defer></script>
 </head>
 <body>
-  <div class="bg-gray-50 sm:w-full md:w-80 h-[32rem] mx-auto flex flex-col">
-    <div class="w-full h-10">
-        <p id="points-div" class="m-auto text-center text-5xl">0</p>
+  <div class="bg-gray-50 sm:w-full md:w-80 h-[30rem] mx-auto flex flex-col">
+    <div class="w-full h-20 grid grid-cols-3">
+        <div class="my-auto">
+            <p id="timer-div" class="m-auto text-center text-3xl">0</p>
+        </div>
+        <div class="my-auto">
+            <p id="points-div" class="text-violet-800 m-auto text-center text-5xl font-bold">0</p>
+        </div>
+        <div class="my-auto">
+            <p id="pr-div" class="m-auto text-center text-3xl">0</p>
+        </div>
     </div>
-    <div class="bg-amber-200 mt-10 grid grid-cols-4 grid-rows-4 h-80">
+    <div class="bg-amber-200 grid grid-cols-4 grid-rows-4 h-80">
         <div id="0" class="bg-white text-center"></div>
-        <div id="1" class="bg-white text-center grow"></div>
+        <div id="1" class="bg-white text-center"></div>
         <div id="2" class="bg-white text-center"></div>
         <div id="3" class="bg-white text-center"></div>
         <div id="4" class="bg-white text-center"></div>
@@ -30,6 +38,8 @@
         <div id="15" class="bg-white text-center"></div>
     </div>
     <div class="justify-self-end">
+        <!-- <p id="timer" class="text-center"></p>
+        <br> -->
         <p id="lost-div" class="text-red-600 text-3xl text-center">
         </p>
     </div>
