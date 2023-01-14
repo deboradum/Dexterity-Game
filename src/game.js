@@ -2,6 +2,7 @@ const NODES = 16;
 const CLASS_WHITE = 'bg-white';
 const CLASS_BLACK = 'bg-black';
 let playing = false;
+let points = 0;
 
 function setup() {
     for (let i=0; i<NODES; i++) {
@@ -18,9 +19,28 @@ function nodeClicked(event) {
     let nodeNum = node.id
 
     if (isActive(nodeNum)) {
-
+        deactivateNode(nodeNum);
+        activateNode();
+        points++;
+        document.getElementById("points-div").innerHTML = points;
+    } else {
+        document.getElementById("points-div").innerHTML = 0;
+        document.getElementById("lost-div").innerHTML = 'You lost!';
+        reset()
     }
 }
+
+function reset() {
+    for (let i=0; i<NODES; i++) {
+        if (isActive(i)) {
+            deactivateNode(i);
+        }
+    }
+    for (let j=0; j<4; j++) {
+        activateNode();
+    }
+}
+
 
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -54,6 +74,12 @@ function activateNode() {
     return;
 }
 
-function
+function deactivateNode(nodeNum) {
+    let nodeEl = document.getElementById(nodeNum);
+    nodeEl.classList.remove(CLASS_BLACK);
+    nodeEl.classList.add(CLASS_WHITE);
+
+    return;
+}
 
 setup();
