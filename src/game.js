@@ -25,31 +25,39 @@ function nodeClicked(event) {
     if (!playing) {
         playing = true;
         clearInterval(int);
+        points = 0;
+        document.getElementById("points-div").innerHTML = points;
+        document.getElementById("lost-div").innerHTML = '';
+        document.getElementById("score-div").innerHTML = '';
         [milliseconds,seconds,minutes,hours] = [0,0,0,0];
         timerRef.innerHTML = '00:000';
         startStopwatch();
     }
 
     if (isActive(nodeNum)) {
-        document.getElementById("lost-div").innerHTML = '';
+
         deactivateNode(nodeNum);
         activateNode();
         points++;
         document.getElementById("points-div").innerHTML = points;
     } else {
         document.getElementById("lost-div").innerHTML = 'You lost!';
-        if (points > personal_record) {
-            personal_record = points;
-            document.getElementById('pr-div').innerHTML = personal_record;
+        time = (seconds + milliseconds/1000).toFixed(3);
+        cps = (points / time).toFixed(2);
+        if (points>10) {
+            document.getElementById("score-div").innerHTML = cps + " clicks per second";
+            if (cps > personal_record) {
+                personal_record = cps;
+                document.getElementById('pr-div').innerHTML = personal_record;
+            }
         }
+
         reset()
     }
 }
 
 function reset() {
     playing = false;
-    points = 0;
-    document.getElementById("points-div").innerHTML = points;
     clearInterval(int);
     for (let i=0; i<NODES; i++) {
         if (isActive(i)) {

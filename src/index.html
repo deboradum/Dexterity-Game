@@ -6,8 +6,8 @@
   <link href="/dist/output.css" rel="stylesheet">
   <script src="game.js" defer></script>
 </head>
-<body>
-  <div class="bg-gray-50 sm:w-full md:w-80 h-[30rem] mx-auto flex flex-col">
+<body class="bg-gray-50">
+  <div class="bg-gray-50 w-80 h-[30rem] mx-auto flex flex-col">
     <div class="w-full h-20 grid grid-cols-3">
         <div class="my-auto">
             <p id="timer-div" class="m-auto text-center text-2xl">00:000</p>
@@ -38,8 +38,9 @@
         <div id="15" class="bg-white text-center"></div>
     </div>
     <div class="justify-self-end">
-        <p id="lost-div" class="text-red-600 text-3xl text-center">
-        </p>
+        <p id="lost-div" class="text-red-600 text-3xl text-center"></p>
+        <br>
+        <p id="score-div" class="text-red-600 text-3xl text-center"></p>
     </div>
   </div>
 </body>
